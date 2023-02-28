@@ -38,5 +38,16 @@ while chute != tesouro:
           print(f'Suas chances acabaram. O nunmero era {tesouro}. Voce Perdeu')
           print('')
           break;
-      
+      else:
+        print('')
+        print('Voce inseriu letras. Só é permitido números')
+        print(f'Voce ainda possuir {chances} chances')
+        print('')
 print("------ GAMER OVER ------")
+
+      
+
+
+'''
+@param {type:"integer"} serve para incluir um parametro para modificação dos valores, ao inves de alterar o valor da variavel no código
+'''
