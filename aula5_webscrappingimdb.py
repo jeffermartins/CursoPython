@@ -18,8 +18,8 @@ import pandas as pd
 
 #get("https://www.imdb.com/search/title?genres=sci-fi&" + "start=" + str(page) + "&explore=title_type,genres&ref_=adv_prv", headers=headers)
 
-pages = np.arange(1,50,50)
-headers = {'Accept-Languague': 'pt-BR,pt;q=0.8'}
+pages = np.arange(1,100,50)
+headers = {'Accept-Language': 'pt-BR,pt;q=0.8'}
 titles = []
 years = []
 ratings = []
@@ -100,7 +100,25 @@ sci_fi_df
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+#relacao entre duração dos filmes e notas
 plt.scatter(sci_fi_df["Tempo"], sci_fi_df["IMDB"])
 plt.xlabel("Duração (min)")
 plt.ylabel("Nota IMDB")
-plt.shhow()
+plt.show()
+
+sns.heatmap(sci_fi_df.corr(), annot=True)
+
+ax = sci_fi_df['IMDB'].value_counts().plot(kind='bar',figsize=(14,8),title='Qtde de Filmes/Votos')
+ax.set_xlabel("Votos")
+ax.set_ylabel("Qtd Filmes")
+ax.plot()
+
+#separar os generos em linha
+sci_fi_df_generos = sci_fi_df.explode("Genero")
+
+#contar qtos generos tem
+genero_counts = sci_fi_df_generos["Genero"].value_counts()
+
+#construir o grafico de barras
+genero_counts.plot(kind="bar")
+plt.show()
